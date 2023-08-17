@@ -33,9 +33,9 @@ class ResumePlayback extends Plugin {
 
     const { resumeable, videoId } = this.options;
 
-    this.player.controlBar.addChild('ReplayButton', {}, 0);
-
     this.player.ready(() => {
+      this.player.controlBar.addChild('ReplayButton', {}, 0);
+
       const key = `videojs-resume-playback:${videoId}`;
 
       this.player.on('timeupdate', () => {
