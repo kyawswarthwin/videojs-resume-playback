@@ -17,12 +17,16 @@ To include videojs-resume-playback on your website or web application, use any o
 This is the simplest case. Get the script in whatever way you prefer and include the plugin _after_ you include [video.js][videojs], so that the `videojs` global is available.
 
 ```html
+<link rel="stylesheet" href="//path/to/videojs-resume-playback.css" />
 <script src="//path/to/video.min.js"></script>
 <script src="//path/to/videojs-resume-playback.min.js"></script>
 <script>
   var player = videojs('my-video');
 
-  player.resumePlayback();
+  player.resumePlayback({
+    resumeable: true,
+    videoId: 'Unique ID',
+  });
 </script>
 ```
 
@@ -48,7 +52,7 @@ player.resumePlayback();
 When using with RequireJS (or another AMD library), get the script in whatever way you prefer and `require` the plugin as you normally would:
 
 ```js
-require(['video.js', 'videojs-resume-playback'], function(videojs) {
+require(['video.js', 'videojs-resume-playback'], function (videojs) {
   var player = videojs('my-video');
 
   player.resumePlayback();
@@ -58,6 +62,5 @@ require(['video.js', 'videojs-resume-playback'], function(videojs) {
 ## License
 
 MIT. Copyright (c) Kyaw Swar Thwin &lt;myanmarunicorn@gmail.com&gt;
-
 
 [videojs]: http://videojs.com/
