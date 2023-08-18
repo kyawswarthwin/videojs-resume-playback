@@ -6,10 +6,10 @@
       font-family: VideoJS;
       font-style: normal;
       font-weight: normal;
-    }
 
-    .vjs-icon-placeholder::before {
-      content: '\f116';
+      &::before {
+        content: '\f116';
+      }
     }
   }
 
