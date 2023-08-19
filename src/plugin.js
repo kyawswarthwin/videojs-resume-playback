@@ -14,6 +14,7 @@ class ReplayButton extends Button {
 
     this.controlText('Replay');
 
+    this.on(player, 'play', (e) => this.handlePlay(e));
     this.on(player, 'ended', (e) => this.handleEnded(e));
   }
 
@@ -27,6 +28,10 @@ class ReplayButton extends Button {
   }
 
   handleSeeked(event) {
+    this.removeClass('vjs-hidden');
+  }
+
+  handlePlay(event) {
     this.removeClass('vjs-hidden');
   }
 
