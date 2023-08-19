@@ -5,7 +5,7 @@ const Plugin = videojs.getPlugin('plugin');
 const Button = videojs.getComponent('Button');
 
 const defaults = {
-  resumeable: true,
+  replayIndex: 1,
 };
 
 class ReplayButton extends Button {
@@ -49,11 +49,9 @@ class ResumePlayback extends Plugin {
 
     this.options = videojs.mergeOptions(defaults, options);
 
-    const { resumeable, videoId } = this.options;
+    const { videoId, replayIndex } = this.options;
 
     this.player.ready(() => {
-      this.player.controlBar.addChild('ReplayButton', {}, 0);
-
       const key = `videojs-resume-playback:${videoId}`;
 
       this.player.on('timeupdate', () => {
@@ -65,10 +63,12 @@ class ResumePlayback extends Plugin {
       });
 
       const lastTime = parseFloat(localStorage.getItem(key));
-      if (resumeable && lastTime) {
+      if (lastTime) {
         this.player.currentTime(lastTime);
         this.player.play();
       }
+
+      this.player.controlBar.addChild('ReplayButton', {}, replayIndex);
     });
   }
 }

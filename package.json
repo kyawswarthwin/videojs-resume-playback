@@ -1,6 +1,6 @@
 {
   "name": "videojs-resume-playback",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Resume Playback in Video.js",
   "main": "dist/videojs-resume-playback.cjs.js",
   "module": "dist/videojs-resume-playback.es.js",
