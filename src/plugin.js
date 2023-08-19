@@ -11,7 +11,10 @@ const defaults = {
 class ReplayButton extends Button {
   constructor(player, options) {
     super(player, options);
+
     this.controlText('Replay');
+
+    this.on(player, 'ended', (e) => this.handleEnded(e));
   }
 
   buildCSSClass() {
@@ -21,6 +24,16 @@ class ReplayButton extends Button {
   handleClick(event) {
     this.player_.currentTime(0);
     this.player_.play();
+  }
+
+  handleSeeked(event) {
+    this.removeClass('vjs-hidden');
+  }
+
+  handleEnded(event) {
+    this.addClass('vjs-hidden');
+
+    this.one(this.player_, 'seeked', (e) => this.handleSeeked(e));
   }
 }
 videojs.registerComponent('ReplayButton', ReplayButton);
